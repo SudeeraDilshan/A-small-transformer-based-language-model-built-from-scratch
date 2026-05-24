@@ -4,8 +4,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.config import config
-from src.evaluate import Generator
+from slm.config import config
+from slm.evaluate import Generator
 
 # Generate text from checkpoint
 checkpoint_path = config.checkpoint_dir / "best_model.pt"

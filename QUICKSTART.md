@@ -20,7 +20,7 @@ pip install -r requirements.txt
 The project is now organized for production use:
 
 ```
-src/              # All core code
+src/slm/          # All core package code
 scripts/          # Entry points
 examples/         # Example scripts
 notebooks/        # Jupyter notebooks
@@ -98,9 +98,9 @@ python examples/inference_example.py
 You can now import from `src`:
 
 ```python
-from src.model import LanguageModel
-from src.config import config
-from src.train import Trainer
+from slm.model import LanguageModel
+from slm.config import config
+from slm.train import Trainer
 
 trainer = Trainer(config)
 trainer.train()
@@ -117,7 +117,7 @@ trainer.train()
 
 ## Configuration
 
-Edit `src/config.py` for quick changes:
+Edit `src/slm/config.py` for quick changes:
 
 ```python
 # Smaller model (faster):
@@ -140,7 +140,7 @@ pip install -r requirements.txt
 ```
 
 **"CUDA out of memory":**
-- Reduce batch_size in src/config.py
+- Reduce batch_size in src/slm/config.py
 - Reduce max_seq_length
 
 **Slow first run:**
@@ -158,10 +158,10 @@ pip install -r requirements.txt
 ## File Locations
 
 - **Main entry point**: `scripts/main.py`
-- **Configuration**: `src/config.py`
-- **Model code**: `src/model.py`
-- **Training**: `src/train.py`
-- **Inference**: `src/evaluate.py`
+- **Configuration**: `src/slm/config.py`
+- **Model code**: `src/slm/model.py`
+- **Training**: `src/slm/train.py`
+- **Inference**: `src/slm/evaluate.py`
 - **Examples**: `examples/`
 
 ## Folder Structure
@@ -169,9 +169,9 @@ pip install -r requirements.txt
 ```
 project/
 ├── src/              ← Core package
-│   ├── model.py
-│   ├── config.py
-│   ├── train.py
+│       ├── model.py
+│           ├── config.py
+│           ├── train.py
 │   └── ...
 ├── scripts/          ← Executables
 │   └── main.py

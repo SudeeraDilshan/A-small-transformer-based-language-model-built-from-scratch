@@ -6,15 +6,16 @@ Small Language Model - Proper folder organization for a production-ready project
 
 ```
 .
-├── src/                          # Main package source code
-│   ├── __init__.py              # Package initialization
-│   ├── config.py                # Configuration classes
-│   ├── model.py                 # Transformer model architecture
-│   ├── tokenizer.py             # Tokenizer implementations
-│   ├── data.py                  # Data loading and preprocessing
-│   ├── train.py                 # Training loop
-│   ├── evaluate.py              # Evaluation and inference
-│   └── utils.py                 # Utility functions
+├── src/                          # Source code root
+│   └── slm/                      # Main package
+│       ├── __init__.py              # Package initialization
+│       ├── config.py                # Configuration classes
+│       ├── model.py                 # Transformer model architecture
+│       ├── tokenizer.py             # Tokenizer implementations
+│       ├── data.py                  # Data loading and preprocessing
+│       ├── train.py                 # Training loop
+│       ├── evaluate.py              # Evaluation and inference
+│       └── utils.py                 # Utility functions
 │
 ├── scripts/                      # Executable scripts
 │   └── main.py                  # CLI entry point
@@ -47,7 +48,7 @@ Small Language Model - Proper folder organization for a production-ready project
 
 ## Directory Purpose
 
-### `src/`
+### `src/slm/`
 Core package code. All reusable modules go here.
 - **config.py**: Centralized configuration management
 - **model.py**: Neural network architecture
@@ -99,9 +100,9 @@ python examples/inference_example.py
 
 ### Use as a package in your code
 ```python
-from src.model import LanguageModel
-from src.config import config
-from src.train import Trainer
+from slm.model import LanguageModel
+from slm.config import config
+from slm.train import Trainer
 
 trainer = Trainer(config)
 trainer.train()

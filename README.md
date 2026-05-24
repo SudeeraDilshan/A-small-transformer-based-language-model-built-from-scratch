@@ -5,15 +5,16 @@ A complete implementation of a transformer-based language model built from scrat
 ## 📁 Project Structure
 
 ```
-src/                  # Core package code
-  ├── model.py        # Transformer architecture
-  ├── tokenizer.py    # Tokenization implementations
-  ├── data.py         # Data loading and preprocessing
-  ├── train.py        # Training pipeline
-  ├── evaluate.py     # Inference and evaluation
-  ├── config.py       # Configuration management
-  ├── utils.py        # Utility functions
-  └── __init__.py     # Package exports
+src/
+  └── slm/            # Core package code
+      ├── model.py        # Transformer architecture
+      ├── tokenizer.py    # Tokenization implementations
+      ├── data.py         # Data loading and preprocessing
+      ├── train.py        # Training pipeline
+      ├── evaluate.py     # Inference and evaluation
+      ├── config.py       # Configuration management
+      ├── utils.py        # Utility functions
+      └── __init__.py     # Package exports
 
 scripts/              # Executable entry points
   └── main.py         # CLI interface
@@ -48,7 +49,7 @@ This README highlights how to get started and where to find the main components.
 
 ## Quick overview
 
-- Core package: `src/` (model, tokenizer, data, train, evaluate, utils)
+- Core package: `src/slm/` (model, tokenizer, data, train, evaluate, utils)
 - CLI entrypoint: `scripts/main.py` (train, generate, tokenizer, info)
 - Examples: `examples/` (train and inference examples)
 - Docs: `README.md`, `QUICKSTART.md`, `PROJECT_STRUCTURE.md`
@@ -107,7 +108,7 @@ python examples/inference_example.py
 ## Notes and tips
 
 - If you encounter "Module not found" errors, ensure you ran `pip install -r requirements.txt` or `pip install -e .` and that you run commands from the repository root.
-- If CUDA memory is insufficient, reduce `src/config.py` batch size or max sequence length.
+- If CUDA memory is insufficient, reduce `src/slm/config.py` batch size or max sequence length.
 - First dataset downloads may take time and use disk space; datasets are cached under `data/`.
 
 ## License
@@ -121,7 +122,7 @@ tokenizer = get_tokenizer("char")
 Edit configuration in code or pass parameters to CLI:
 
 ```python
-from src.config import Config, ModelConfig, TrainingConfig, DataConfig
+from slm.config import Config, ModelConfig, TrainingConfig, DataConfig
 
 config = Config(
     model=ModelConfig(
@@ -181,22 +182,22 @@ Then open http://localhost:6006 in your browser.
 ### Distributed Training (Multi-GPU)
 
 ```python
-from src.config import Config
+from slm.config import Config
 config = Config(use_distributed=True, world_size=4)
 ```
 
 ### Mixed Precision Training
 
 ```python
-from src.config import TrainingConfig
+from slm.config import TrainingConfig
 config.training.use_mixed_precision = True
 ```
 
 ### Custom Dataset
 
 ```python
-from src.data import TextDataset
-from src.tokenizer import get_tokenizer
+from slm.data import TextDataset
+from slm.tokenizer import get_tokenizer
 
 tokenizer = get_tokenizer("char")
 dataset = TextDataset(
@@ -220,13 +221,13 @@ dataset = TextDataset(
 
 | File | Purpose |
 |------|---------|
-| `src/config.py` | Configuration classes and defaults |
-| `src/model.py` | Transformer model implementation |
-| `src/tokenizer.py` | Character and BPE tokenizers |
-| `src/data.py` | Dataset loading and preprocessing |
-| `src/train.py` | Training loop implementation |
-| `src/evaluate.py` | Inference and evaluation |
-| `src/utils.py` | Helper functions and utilities |
+| `src/slm/config.py` | Configuration classes and defaults |
+| `src/slm/model.py` | Transformer model implementation |
+| `src/slm/tokenizer.py` | Character and BPE tokenizers |
+| `src/slm/data.py` | Dataset loading and preprocessing |
+| `src/slm/train.py` | Training loop implementation |
+| `src/slm/evaluate.py` | Inference and evaluation |
+| `src/slm/utils.py` | Helper functions and utilities |
 | `scripts/main.py` | CLI entry point |
 | `examples/` | Example scripts |
 | `setup.py` | Package installation |
@@ -235,7 +236,7 @@ dataset = TextDataset(
 ## 🔄 Workflow
 
 1. **Setup**: Install dependencies and review structure
-2. **Configure**: Adjust model/training settings in `src/config.py`
+2. **Configure**: Adjust model/training settings in `src/slm/config.py`
 3. **Train**: Run training script and monitor progress
 4. **Evaluate**: Generate text and assess quality
 5. **Iterate**: Fine-tune hyperparameters based on results

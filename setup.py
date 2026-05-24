@@ -8,7 +8,8 @@ setup(
     author="Sudeera Dilshan",
     author_email="dilshanrgs31@gmail.com",
     url="git@github.com:SudeeraDilshan/A-small-transformer-based-language-model-built-from-scratch.git",
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     python_requires=">=3.8",
     install_requires=[
         "torch>=2.0.0",

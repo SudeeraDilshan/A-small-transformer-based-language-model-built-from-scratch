@@ -4,8 +4,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.config import Config, ModelConfig, TrainingConfig, DataConfig
-from src.train import Trainer
+from slm.config import Config, ModelConfig, TrainingConfig, DataConfig
+from slm.train import Trainer
 
 # Create custom config for quick experimentation
 config = Config(

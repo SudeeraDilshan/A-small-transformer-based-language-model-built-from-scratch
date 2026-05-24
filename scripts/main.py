@@ -9,13 +9,13 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import torch
 
-from src.config import config
-from src.train import Trainer
-from src.evaluate import Generator, interactive_generation
-from src.tokenizer import get_tokenizer
-from src.data import load_dataset
-from src.model import LanguageModel
-from src.utils import count_parameters
+from slm.config import config
+from slm.train import Trainer
+from slm.evaluate import Generator, interactive_generation
+from slm.tokenizer import get_tokenizer
+from slm.data import load_dataset
+from slm.model import LanguageModel
+from slm.utils import count_parameters
 
 logging.basicConfig(
     level=logging.INFO,
