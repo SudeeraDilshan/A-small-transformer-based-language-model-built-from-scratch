@@ -23,13 +23,7 @@ examples/             # Example scripts
   ├── train_example.py      # Training example
   └── inference_example.py  # Inference example
 
-notebooks/            # Jupyter notebooks
-tests/                # Unit tests
-configs/              # Configuration files
-checkpoints/          # Model checkpoints
-outputs/              # Training outputs
-logs/                 # TensorBoard logs
-data/                 # Datasets
+
 ```
 
 For detailed structure, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md).

@@ -23,13 +23,7 @@ The project is now organized for production use:
 src/slm/          # All core package code
 scripts/          # Entry points
 examples/         # Example scripts
-notebooks/        # Jupyter notebooks
-tests/            # Unit tests
-configs/          # Config files
-checkpoints/      # Model checkpoints (auto-created)
-outputs/          # Outputs (auto-created)
-logs/             # TensorBoard logs (auto-created)
-data/             # Datasets (auto-created)
+
 ```
 
 See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for details.
@@ -176,9 +170,7 @@ project/
 ├── scripts/          ← Executables
 │   └── main.py
 ├── examples/         ← Examples
-├── checkpoints/      ← Auto-created on first train
-├── outputs/          ← Auto-created on first train
-└── logs/             ← Auto-created on first train
+
 ```
 
 ---

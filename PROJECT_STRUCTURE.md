@@ -24,20 +24,7 @@ Small Language Model - Proper folder organization for a production-ready project
 │   ├── train_example.py         # Training example
 │   └── inference_example.py     # Inference example
 │
-├── notebooks/                    # Jupyter notebooks
-│   └── (add your notebooks here)
-│
-├── tests/                        # Unit tests
-│   └── (add your tests here)
-│
-├── configs/                      # Configuration files (YAML/JSON)
-│   └── (add custom configs here)
-│
-├── checkpoints/                  # Model checkpoints (git ignored)
-├── outputs/                      # Output directory (git ignored)
-├── logs/                         # TensorBoard logs (git ignored)
-├── data/                         # Dataset directory (git ignored)
-│
+
 ├── requirements.txt              # Python dependencies
 ├── setup.py                      # Package setup script
 ├── README.md                     # Main documentation
@@ -67,17 +54,6 @@ Example scripts showing how to use the library.
 - **train_example.py**: Custom training example
 - **inference_example.py**: Text generation example
 
-### `notebooks/`
-Jupyter notebooks for exploration and analysis.
-
-### `tests/`
-Unit tests for the codebase (pytest recommended).
-
-### `configs/`
-Configuration files for different experiments (YAML/JSON).
-
-### `checkpoints/`, `outputs/`, `logs/`, `data/`
-Runtime directories (created automatically, git ignored).
 
 ## Usage
 
