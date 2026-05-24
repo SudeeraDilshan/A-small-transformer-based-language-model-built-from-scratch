@@ -7,7 +7,7 @@ setup(
     description="A small transformer-based language model built from scratch",
     author="Sudeera Dilshan",
     author_email="dilshanrgs31@gmail.com",
-    url="https://github.com/yourusername/small-language-model",
+    url="git@github.com:SudeeraDilshan/A-small-transformer-based-language-model-built-from-scratch.git",
     packages=find_packages(),
     python_requires=">=3.8",
     install_requires=[

@@ -40,114 +40,79 @@ For detailed structure, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md).
 - **Multiple Tokenizers**: Character-level and BPE encoding
 - **Advanced Sampling**: Top-k and top-p (nucleus) sampling
 - **Mixed Precision**: FP16 training for faster convergence
-- **Checkpointing**: Save and resume training
-- **Dataset Support**: TinyStories and WikiText built-in
-- **Interactive Generation**: Real-time text generation loop
-- **Production-Ready**: Proper folder structure and best practices
+# Small Language Model from Scratch
 
-## 🚀 Quick Start
+A minimal, self-contained transformer-based language model built from scratch using PyTorch. The repository is organized as a small reusable package and includes training, evaluation, tokenization, and example scripts.
 
-### 1. Installation
+This README highlights how to get started and where to find the main components. For a detailed developer-oriented layout, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md).
+
+## Quick overview
+
+- Core package: `src/` (model, tokenizer, data, train, evaluate, utils)
+- CLI entrypoint: `scripts/main.py` (train, generate, tokenizer, info)
+- Examples: `examples/` (train and inference examples)
+- Docs: `README.md`, `QUICKSTART.md`, `PROJECT_STRUCTURE.md`
+
+## Installation
+
+Activate your environment and install dependencies:
 
 ```bash
-# Install dependencies
+# Activate virtualenv (Windows PowerShell)
+.\\.venv\Scripts\\Activate.ps1
+
+# Install requirements
 pip install -r requirements.txt
 
-# Or install as a development package
+# (optional) Install package in editable mode
 pip install -e .
 ```
 
-### 2. View Model Info
+## Common commands
+
+- Show model and config info:
 
 ```bash
 python scripts/main.py info
 ```
 
-### 3. Train the Model
+- Train the model (default config):
 
 ```bash
-# Default training
 python scripts/main.py train
-
-# Custom parameters
-python scripts/main.py train --epochs 10 --batch-size 64 --lr 1e-4 --dataset tiny_stories
 ```
 
-### 4. Generate Text
+- Generate text:
 
 ```bash
-# Single generation
 python scripts/main.py generate --prompt "Once upon a time" --length 200
-
-# Interactive mode
-python scripts/main.py generate --interactive
-
-# With custom sampling
-python scripts/main.py generate --prompt "Hello" --temperature 0.8 --top-k 50 --top-p 0.95
 ```
 
-### 5. Tokenizer
+- Build/test tokenizer:
 
 ```bash
-# Build tokenizer
-python scripts/main.py tokenizer --action build
-
-# Test tokenizer
-python scripts/main.py tokenizer --action test --test-text "Your text here"
+python scripts.main.py tokenizer --action build
+python scripts.main.py tokenizer --action test --test-text "Hello world"
 ```
 
-## 📚 Usage Examples
+## Examples
 
-### Train with Custom Config
+Run the provided examples:
 
-```python
-from src.config import Config, ModelConfig, TrainingConfig
-from src.train import Trainer
-
-config = Config(
-    model=ModelConfig(hidden_size=256, num_layers=4),
-    training=TrainingConfig(batch_size=32, num_epochs=5),
-)
-
-trainer = Trainer(config)
-trainer.train()
+```bash
+python examples/train_example.py
+python examples/inference_example.py
 ```
 
-### Generate Text from Code
+## Notes and tips
 
-```python
-from src.evaluate import Generator
-from src.config import config
-from pathlib import Path
+- If you encounter "Module not found" errors, ensure you ran `pip install -r requirements.txt` or `pip install -e .` and that you run commands from the repository root.
+- If CUDA memory is insufficient, reduce `src/config.py` batch size or max sequence length.
+- First dataset downloads may take time and use disk space; datasets are cached under `data/`.
 
-checkpoint = config.checkpoint_dir / "best_model.pt"
-generator = Generator(checkpoint, config)
+## License
 
-text = generator.generate(
-    "Once upon a time",
-    max_length=200,
-    temperature=0.8,
-    top_p=0.95
-)
-print(text)
-```
-
-### Use as Package
-
-```python
-from src.model import LanguageModel
-from src.tokenizer import get_tokenizer
-from src.config import config
-
-# Create model
-model = LanguageModel(
-    vocab_size=10000,
-    hidden_size=256,
-    num_layers=4,
-    num_heads=8
-)
-
-# Get tokenizer
+MIT
 tokenizer = get_tokenizer("char")
 ```
 
